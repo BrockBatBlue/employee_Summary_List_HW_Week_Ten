@@ -9,39 +9,10 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const ListPrompt = require("inquirer/lib/prompts/list");
 
 const employeeMembers = [];
 const idArray = [];
-
-class Employee {
-    Constructor(name, id, email){
-        this.name = name;
-        this.id = id;
-        this.email = email;
-    }
-}
-class Manager extends Employee {
-    Constructor(officeNumber, getRole){
-        super(officeNumber, getRole);
-        this.officeNumber = officeNumber;
-        this.getRole = getRole;
-    }
-}
-class Engineer extends Employee {
-    Constructor(engineerGithub, getRole){
-        super(engineerGithub, getRole);
-        this.engineerGithub = engineerGithub;
-        this.getRole = getRole;
-    }
-}
-class Intern extends Employee {
-    Constructor(internSchool, getRole){
-        super(internSchool, getRole);
-        this.internSchool = internSchool;
-        this.getRole = getRole;
-    }
-}
-
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -51,12 +22,12 @@ function team () {
         {
             type: "list",
             name: "teamMembers",
-            message: "Which role would you like to add?"
+            message: "Which team role would you like to add?",
             choices: [
                 "Manager",
                 "Engineer",
                 "Intern",
-                "I have no more team members I wish to add to the list."
+                "I have no more team member roles I wish to add to the list."
             ]
         }
     ]).then(memberChoice => {
