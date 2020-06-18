@@ -10,9 +10,61 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+class Employee {
+    Constructor(name, id, email){
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
+}
+
+class Manager extends Employee {
+    Constructor(officeNumber, managerRole) {
+        super(officeNumber, managerRole);
+        this.officeNumber = officeNumber;
+        this.managerRole = managerRole;
+    }
+}
+class Engineer extends Employee {
+    Constructor(gitUserName, engineerRole) {
+        super(gitUserName, engineerRole);
+        this.gitUserName = gitUserName;
+        this.engineerRole = engineerRole;
+    }
+}
+class Intern extends Employee {
+    Constructor(school, internRole) {
+        super(school, internRole);
+        this.school = school;
+        this.internRole = internRole;
+    }
+}
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+const Manager = [
+    {
+        type: "input",
+        name: "name",
+        message: "Please provide employee's full name."
+    },
+    {
+        type: "input",
+        name: "role",
+        message: "Please provide employee's role."
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "Please provide employee ID number."
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Please provide employee email address."
+    },
+]
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
