@@ -17,26 +17,26 @@ class Employee {
         this.email = email;
     }
 }
-
 class Manager extends Employee {
-    Constructor(officeNumber, managerRole) {
-        super(officeNumber, managerRole);
+    Constructor(officeNumber, getRole) {
+        super(officeNumber, getRole);
         this.officeNumber = officeNumber;
-        this.managerRole = managerRole;
+        this.getRole = getRole;
     }
 }
 class Engineer extends Employee {
-    Constructor(gitUserName, engineerRole) {
-        super(gitUserName, engineerRole);
-        this.gitUserName = gitUserName;
-        this.engineerRole = engineerRole;
+    Constructor(github, getRole) {
+        super(github, getRole);
+        this.github = github;
+        this.getRole = getRole;
     }
 }
 class Intern extends Employee {
-    Constructor(school, internRole) {
-        super(school, internRole);
+    Constructor(school, getRole, getSchool) {
+        super(school, getRole, getSchool);
         this.school = school;
-        this.internRole = internRole;
+        this.getRole = internRole;
+        this.getSchool = getSchool;
     }
 }
 
