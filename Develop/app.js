@@ -13,6 +13,7 @@ const ListPrompt = require("inquirer/lib/prompts/list");
 
 const employeeMembers = [];
 const idArray = [];
+team();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -46,90 +47,98 @@ function team () {
         }
     })
 }
-const Manager = [
-    {
-        type: "input",
-        name: "managerName",
-        message: "Please provide the Manager's full name."
-    },
-    {
-        type: "input",
-        name: "managerId",
-        message: "Please provide the Manager's ID number."
-    },
-    {
-        type: "input",
-        name: "managerEmail",
-        message: "Please provide the Manager's email address."
-    },
-    {
-        type: "input",
-        name: "officeNumber",
-        message: "Please provide Manager's office number."
-    }
-].then(answers => {
-    const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
-    employeeMembers.push(manager);
-    idArray.push(answers.managerId);
-    team();
-  });
+function addManager(){
 
-
-const Engineer = [
-    {
-        type: "input",
-        name: "engineerName",
-        message: "Please provide the Engineer's full name."
-    },
-    {
-        type: "input",
-        name: "engineerId",
-        message: "Please provide the Engineer's ID number."
-    },
-    {
-        type: "input",
-        name: "engineerEmail",
-        message: "Please provide the Engineer's email address."
-    },
-    {
-        type: "input",
-        name: "engineerGithub",
-        message: "Please provide Engineer's gitHub username."
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "managerName",
+            message: "Please provide the Manager's full name."
+        },
+        {
+            type: "input",
+            name: "managerId",
+            message: "Please provide the Manager's ID number."
+        },
+        {
+            type: "input",
+            name: "managerEmail",
+            message: "Please provide the Manager's email address."
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "Please provide Manager's office number."
+        }
+    ]).then(answers => {
+        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
+        employeeMembers.push(manager);
+        idArray.push(answers.managerId);
+        team();
+        });
     }
-].then(answers => {
-    const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-    employeeMembers.push(engineer);
-    idArray.push(answers.engineerId);
-    team();
-  });
 
-const Intern = [
-    {
-        type: "input",
-        name: "internName",
-        message: "Please provide the Intern's full name."
-    },
-    {
-        type: "input",
-        name: "internId",
-        message: "Please provide the Intern's ID number."
-    },
-    {
-        type: "input",
-        name: "internEmail",
-        message: "Please provide the Intern's email address."
-    },
-    {
-        type: "input",
-        name: "internSchool",
-        message: "Please provide Intern's school name."
-    }
-].then(answers => {
-    const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-    employeeMembers.push(intern);
-    idArray.push(answers.internId);
-    team();
-  });
+function addEngineer(){
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "Please provide the Engineer's full name."
+        },
+        {
+            type: "input",
+            name: "engineerId",
+            message: "Please provide the Engineer's ID number."
+        },
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "Please provide the Engineer's email address."
+        },
+        {
+            type: "input",
+            name: "engineerGithub",
+            message: "Please provide Engineer's gitHub username."
+        }
+    ]).then(answers => {
+        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        employeeMembers.push(engineer);
+        idArray.push(answers.engineerId);
+        team();
+      });
+}
+
+function addIntern(){
+
+    inquirer.prompt([
+            {
+                type: "input",
+                name: "internName",
+                message: "Please provide the Intern's full name."
+            },
+            {
+                type: "input",
+                name: "internId",
+                message: "Please provide the Intern's ID number."
+            },
+            {
+                type: "input",
+                name: "internEmail",
+                message: "Please provide the Intern's email address."
+            },
+            {
+                type: "input",
+                name: "internSchool",
+                message: "Please provide Intern's school name."
+            }
+        ]).then(answers => {
+            const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            employeeMembers.push(intern);
+            idArray.push(answers.internId);
+            team();
+          });      
+}
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
